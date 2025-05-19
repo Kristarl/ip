@@ -212,9 +212,9 @@
         "class_1 = data_df.loc[data_df['Class'] == 1][\"Time\"]\n",
         "#Здесь создаются две переменные содержащии значения времени транзакций для классов \"не мошенничество\" и \"мошенничество\"\n",
         "hist_data = [class_0, class_1] #создаем список из 2х масивов\n",
-        "group_labels = ['Not Fraud', 'Fraud']\n",
+        "group_labels = ['Не мошенничество', 'мошенничество']\n",
         "fig = ff.create_distplot(hist_data, group_labels, show_hist=False, show_rug=False)\n",
-        "fig['layout'].update(title='Credit Card Transactions Time Density Plot', xaxis=dict(title='Time [s]'))\n",
+        "fig['layout'].update(title='График зависимости времени транзакций по кредитным картам', xaxis=dict(title='Time [s]'))\n",
         "iplot(fig, filename='dist_only')\n",
         "#создание графика плотности распределения времени транзакций для двух классов: \"не мошенничество\" и \"мошенничество\""
       ],
@@ -246,7 +246,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Sum\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Sum\", data=df.loc[df.Class==1], color=\"green\")\n",
-        "plt.suptitle(\"Total Amount\")\n",
+        "plt.suptitle(\"Общая сумма\")\n",
         "plt.show();\n",
         "#Строится два параллельных графика зависимости сумм от часа суток, отдельно для двух классов данных"
       ],
@@ -262,7 +262,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Transactions\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Transactions\", data=df.loc[df.Class==1], color=\"blue\")\n",
-        "plt.suptitle(\"Total Number of Transactions\")\n",
+        "plt.suptitle(\"Общее количество транзакций\")\n",
         "plt.show();\n",
         "#наглядно показать различия в динамике количества транзакций по часам суток для двух групп (классов) данных, обозначенных как 0 и 1. Красный график выделяет активность одной группы на фоне другой, позволяя провести сравнительный анализ."
       ],
@@ -278,7 +278,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Mean\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Mean\", data=df.loc[df.Class==1], color=\"red\")\n",
-        "plt.suptitle(\"Average Amount of Transactions\")\n",
+        "plt.suptitle(\"максимального размера транзакций\")\n",
         "plt.show();\n",
         "#создаёт два графика, изображающие средние величины транзакций по часам суток для двух разных классов данных (0 и 1)."
       ],
@@ -294,7 +294,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Max\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Max\", data=df.loc[df.Class==1], color=\"red\")\n",
-        "plt.suptitle(\"Maximum Amount of Transactions\")\n",
+        "plt.suptitle(\"Максимальный объем транзакций\")\n",
         "plt.show();\n",
         "#визуализация максимального размера транзакций по часам суток для двух разных классов данных"
       ],
@@ -310,7 +310,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Median\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Median\", data=df.loc[df.Class==1], color=\"red\")\n",
-        "plt.suptitle(\"Median Amount of Transactions\")\n",
+        "plt.suptitle(\"Средний объем транзакций\")\n",
         "plt.show();\n",
         "#Создать два графика, иллюстрирующих медианное значение транзакций по часам суток для двух классов данных"
       ],
@@ -326,7 +326,7 @@
         "fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(18,6))\n",
         "s = sns.lineplot(ax = ax1, x=\"Hour\", y=\"Min\", data=df.loc[df.Class==0])\n",
         "s = sns.lineplot(ax = ax2, x=\"Hour\", y=\"Min\", data=df.loc[df.Class==1], color=\"red\")\n",
-        "plt.suptitle(\"Minimum Amount of Transactions\")\n",
+        "plt.suptitle(\"Минимальная сумма транзакции\")\n",
         "plt.show();fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(12,6))\n",
         "s = sns.boxplot(ax = ax1, x=\"Class\", y=\"Amount\", hue=\"Class\",data=data_df, palette=\"PRGn\",showfliers=True)\n",
         "s = sns.boxplot(ax = ax2, x=\"Class\", y=\"Amount\", hue=\"Class\",data=data_df, palette=\"PRGn\",showfliers=False)\n",
@@ -384,9 +384,9 @@
         "    mode = \"markers\"\n",
         ")\n",
         "data = [trace]\n",
-        "layout = dict(title = 'Amount of fraudulent transactions',\n",
-        "          xaxis = dict(title = 'Time [s]', showticklabels=True),\n",
-        "          yaxis = dict(title = 'Amount'),\n",
+        "layout = dict(title = 'Количество мошеннических транзакций',\n",
+        "          xaxis = dict(title = 'Время в секундах', showticklabels=True),\n",
+        "          yaxis = dict(title = 'Количество'),\n",
         "          hovermode='closest'\n",
         "         )\n",
         "fig = dict(data=data, layout=layout)\n",
@@ -403,7 +403,7 @@
       "cell_type": "code",
       "source": [
         "plt.figure(figsize = (14,14))\n",
-        "plt.title('Credit Card Transactions features correlation plot (Pearson)')\n",
+        "plt.title('График корреляции характеристик транзакций по кредитным картам')\n",
         "corr = data_df.corr()\n",
         "sns.heatmap(corr,xticklabels=corr.columns,yticklabels=corr.columns,linewidths=.1,cmap=\"YlGn\")\n",
         "plt.show()\n",
@@ -975,11 +975,11 @@
     {
       "cell_type": "code",
       "source": [
-        "tmp = pd.DataFrame({'Feature': predictors, 'Feature importance': clf.feature_importances_})\n",
-        "tmp = tmp.sort_values(by='Feature importance',ascending=False)\n",
+        "tmp = pd.DataFrame({'Особенность': predictors, 'Важность функций': clf.feature_importances_})\n",
+        "tmp = tmp.sort_values(by='Важность функций',ascending=False)\n",
         "plt.figure(figsize = (7,4))\n",
-        "plt.title('Features importance',fontsize=14)\n",
-        "s = sns.barplot(x='Feature',y='Feature importance',data=tmp)\n",
+        "plt.title('Важность функций',fontsize=14)\n",
+        "s = sns.barplot(x='Особенность',y='Важность функций',data=tmp)\n",
         "s.set_xticklabels(s.get_xticklabels(),rotation=90)\n",
         "plt.show()\n",
         "#формирует визуализацию"
@@ -1752,11 +1752,11 @@
     {
       "cell_type": "code",
       "source": [
-        "tmp = pd.DataFrame({'Feature': predictors, 'Feature importance': clf.feature_importances_})\n",
-        "tmp = tmp.sort_values(by='Feature importance',ascending=False)\n",
+        "tmp = pd.DataFrame({'Особенность': predictors, 'Важность функции': clf.feature_importances_})\n",
+        "tmp = tmp.sort_values(by='Важность функции',ascending=False)\n",
         "plt.figure(figsize = (7,4))\n",
-        "plt.title('Features importance',fontsize=14)\n",
-        "s = sns.barplot(x='Feature',y='Feature importance',data=tmp)\n",
+        "plt.title('Важность функции',fontsize=14)\n",
+        "s = sns.barplot(x='Особенность',y='Важность функции',data=tmp)\n",
         "s.set_xticklabels(s.get_xticklabels(),rotation=90)\n",
         "plt.show()\n",
         "#визуализирует важность признаков, используемых моделью"
@@ -1799,8 +1799,8 @@
         "cm = pd.crosstab(valid_df[target].values, preds, rownames=['Actual'], colnames=['Predicted'])\n",
         "fig, (ax1) = plt.subplots(ncols=1, figsize=(5,5))\n",
         "sns.heatmap(cm,\n",
-        "            xticklabels=['Not Fraud', 'Fraud'],\n",
-        "            yticklabels=['Not Fraud', 'Fraud'],\n",
+        "            xticklabels=['Не мошенничество', 'мошенничество'],\n",
+        "            yticklabels=['Не мошенничество', 'мошенничество'],\n",
         "            annot=True,ax=ax1,\n",
         "            linewidths=.2,linecolor=\"Darkblue\", cmap=\"Blues\")\n",
         "plt.title('Confusion Matrix', fontsize=14)\n",
@@ -2151,7 +2151,7 @@
       "cell_type": "code",
       "source": [
         "fig, (ax) = plt.subplots(ncols=1, figsize=(8,5))\n",
-        "lgb.plot_importance(model, height=0.8, title=\"Features importance (LightGBM)\", ax=ax,color=\"red\")\n",
+        "lgb.plot_importance(model, height=0.8, title=\"Важность функций (LightGBM)\", ax=ax,color=\"red\")\n",
         "#выводим столбчатый график"
       ],
       "metadata": {
